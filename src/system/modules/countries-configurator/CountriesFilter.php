@@ -3,10 +3,10 @@
 /**
  * Countries configurator extension for Contao Open Source CMS.
  *
- * @author  Tristan Lins <tristan.lins@infinitysoft.de>
+ * @author  Tristan Lins <tristan.lins@bit3.de>
  * @package CountriesConfigurator
  * @license LGPL
- * @link    https://github.com/InfinitySoft/contao-countries-configurator
+ * @link    https://github.com/bit3/contao-countries-configurator
  */
 
 
@@ -47,17 +47,18 @@ class CountriesFilter extends Controller
 	 * @param $return
 	 * @return mixed
 	 */
-	public function hookGetContries($return, &$countries = array())
+	public function hookGetContries(&$return, &$countries = array())
 	{
-		$arrCountries = null;
+		$arrCountries = null;  
+    $return = array();   
 
-		if (TL_MODE != 'BE' || $this->Input->get('do') != 'settings')
+		if (TL_MODE != 'BE' || \Input::get('do') != 'settings')
 		{
-			$arrGlobalCountries = deserialize($GLOBALS['TL_CONFIG']['system_countries'], true);
+			$arrGlobalCountries = deserialize($GLOBALS['TL_CONFIG']['system_countries'], true); 
 			if (count($arrGlobalCountries))
 			{
 				$arrCountries = array_combine($arrGlobalCountries, $arrGlobalCountries);
-			}
+			}        
 		}
 
 		if (TL_MODE == 'FE' && isset($GLOBALS['objPage']))
@@ -70,10 +71,11 @@ class CountriesFilter extends Controller
 				if (count($arrPageCountries)) {
 					$arrCountries = array_combine($arrPageCountries, $arrPageCountries);
 				}
-			}
+			}    
 		}
 
 		if (is_array($arrCountries)) {
+      
 			foreach ($countries as $strKey => $strCountry)
 			{
 				if (!isset($arrCountries[$strKey])) {
@@ -82,11 +84,9 @@ class CountriesFilter extends Controller
 			}
 
 			foreach ($arrCountries as $strKey)
-			{
+			{       
 				$return[$strKey] = $countries[$strKey];
-			}
+			}   
 		}
-
-		return $return;
 	}
 }
