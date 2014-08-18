@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * Countries configurator extension for Contao Open Source CMS.
@@ -11,6 +11,9 @@
 
 
 /**
- * Back end modules
+ * Register the classes
  */
-$GLOBALS['TL_LANG']['MOD']['countries-configurator'] = array('Countries configurator', 'Configure the countries selection within the backend.');
+ClassLoader::addClasses(array
+(
+	'CountriesFilter' => 'system/modules/countries-configurator/CountriesFilter.php',
+));

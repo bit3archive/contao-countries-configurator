@@ -3,10 +3,10 @@
 /**
  * Countries configurator extension for Contao Open Source CMS.
  *
- * @author  Tristan Lins <tristan.lins@infinitysoft.de>
+ * @author  Tristan Lins <tristan.lins@bit3.de>
  * @package CountriesConfigurator
  * @license LGPL
- * @link    https://github.com/InfinitySoft/contao-countries-configurator
+ * @link    https://github.com/bit3/contao-countries-configurator
  */
 
 
